@@ -5,4 +5,15 @@ img {
 body {
     text-align: center;
     font-family: "Arial";
+    background-color: black;
+    background-image: url("https://cdn.arstechnica.net/wp-content/uploads/2014/10/2014-10-26_00031.jpg");
+    background-size: cover;
+    
+}
+
+h1:hover {
+    color: red;
+    font-family: "Comic Sans MS";
+    transform: scale(1.2) rotate(20deg);
+    animation: background 10s infinite;
 }
