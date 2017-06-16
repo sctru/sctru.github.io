@@ -1,68 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="styles.css"/>
-        <script type="text/javascript" src="http://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<head>
+<title>Chart using XML Data</title>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript">
     window.onload = function() {
         var dataPoints = [];
-     
+	 
         function getDataPointsFromCSV(csv) {
             var dataPoints = csvLines = points = [];
             csvLines = csv.split(/[\r?\n|\r|\n]+/);         
-                
+		        
             for (var i = 0; i < csvLines.length; i++)
                 if (csvLines[i].length > 0) {
                     points = csvLines[i].split(",");
                     dataPoints.push({ 
                         x: parseFloat(points[0]), 
-                        y: parseFloat(points[1])        
+                        y: parseFloat(points[1]) 		
                     });
                 }
             return dataPoints;
         }
-    
-    $.get("http://canvasjs.com/services/data/datapoints.php?xstart=5&ystart=10&length=10&type=csv", function(data) {
-        var chart = new CanvasJS.Chart("chartContainer", {
-            title: {
-                 text: "Chart from CSV",
-            },
-            data: [{
-                 type: "line",
-                 dataPoints: getDataPointsFromCSV(data)
-              }]
-         });
-        
-          chart.render();
+	
+	$.get("https://canvasjs.com/services/data/datapoints.php?xstart=5&ystart=10&length=10&type=csv", function(data) {
+	    var chart = new CanvasJS.Chart("chartContainer", {
+		    title: {
+		         text: "Chart from CSV",
+		    },
+		    data: [{
+		         type: "line",
+		         dataPoints: getDataPointsFromCSV(data)
+		      }]
+	     });
+		
+	      chart.render();
 
-    });
+	});
   }
 </script>
-    </head>
-    <body>
-        <img src="https://github.com/hackclub/dinosaurs/raw/master/smart_dinosaur_docs.png">
-        <h1>This is a webpage.</h1>
-        <p>Coder Dino</p>
-        <p>Will code for food</p>
-        <input type="text" id="message" />
-        <button onclick="dosomething()">Delete dat dino</button>
-        
-        <p></p><input type="text" id="imageurl" />
-        <button onclick=dosomething2()">browser alert w/ text</button>
-        <button onclick="changeimage()">Change Image URL</button>
-        <button onclick="addimage()">Add Image</button>
-        </p>
-        <div id="chartContainer" style="width:100%; height:300px;"></div>
-        <script
-          src="https://code.jquery.com/jquery-3.2.1.min.js"
-          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-          crossorigin="anonymous"></script>
-         <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
-<!-- or -->
-
-<script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js"></script>
-        <script src="script.js"></script>
-            
-    </body>
+</head>
+<body>
+	<div id="chartContainer" style="width:100%; height:300px;"></div>
+</body>
 </html>
